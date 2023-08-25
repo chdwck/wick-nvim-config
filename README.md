@@ -6,7 +6,7 @@ those cool plugins without having to fight with configuration. After a couple mo
 I still love LunarVim, but now it feels like too much. 
 
 So here I am with my custom nvim config. It does what I want and thats it. It's
-wonderful. I feel like I just built my lighsaber.
+wonderful. I feel like I just built my lightsaber.
 
 ### New to nvim and want to try out my preferences?
 
