@@ -12,7 +12,7 @@ wonderful. I feel like I just built my lightsaber.
 
 * [install nvim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 * [install lazygit](https://github.com/jesseduffield/lazygit) - a truly magical git experience
-* [install catpuccin terminal colors](https://github.com/catppuccin/catppuccin)
+* [install catpuccin terminal colors](https://github.com/catppuccin/catppuccin) - optional, just keeps colors consistent between lazygit and nvim
 * Install my config
 ```
 cd ~/.config
