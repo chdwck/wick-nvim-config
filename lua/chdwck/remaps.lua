@@ -21,3 +21,10 @@ vim.keymap.set("n", "<leader>s", [[:s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><L
 
 -- eslint the current file
 vim.keymap.set("n", "<leader>lf", ":!eslint --fix %<CR>")
+vim.keymap.set("n", "<leader><leader>", ":b#<CR>")
+vim.keymap.set("n", "<leader>t", ":term<CR>")
+
+-- Window resize commands
+vim.keymap.set("n", "+", "vert resize +5<CR>")
+vim.keymap.set("n", "-", "vert resize -5<CR>")
+
