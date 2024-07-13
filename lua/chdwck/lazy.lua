@@ -27,7 +27,7 @@ require("lazy").setup({
         build = ':TSUpdate',
         config = function()
             require("nvim-treesitter.configs").setup({
-                ensure_installed = { "lua", "typescript", "javascript", "go" },
+                ensure_installed = { "lua", "typescript", "javascript", "go", "python" },
                 highlight = {
                     enable = true
                 }
@@ -57,7 +57,7 @@ require("lazy").setup({
             vim.cmd.colorscheme "catppuccin"
         end
     },
-    { "mbbill/undotree" },
+    -- { "mbbill/undotree" },
     {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.2',
@@ -71,5 +71,35 @@ require("lazy").setup({
         },
         lazy = false,
     },
-    {'akinsho/toggleterm.nvim', version = "*", config = true}
+    {
+      'jose-elias-alvarez/null-ls.nvim',
+      dependencies = {'nvim-lua/plenary.nvim'},
+      config = function()
+        local null_ls = require('null-ls')
+        null_ls.setup({
+          sources = {
+            null_ls.builtins.formatting.prettier
+          }
+        })
+      end
+    },
+    {
+      'MunifTanjim/prettier.nvim',
+      config = function()
+        require('prettier').setup({
+          bin = 'prettier',
+          filetypes = {
+            "css", "graphql", "html", "javascript", "javascriptreact",
+            "json", "less", "markdown", "scss", "typescript",
+            "typescriptreact", "yaml"
+          },
+        })
+      end
+    },
+    { 'akinsho/toggleterm.nvim', version = "*", config = true },
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    }
 })
