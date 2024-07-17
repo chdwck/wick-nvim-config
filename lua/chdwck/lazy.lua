@@ -27,7 +27,7 @@ require("lazy").setup({
         build = ':TSUpdate',
         config = function()
             require("nvim-treesitter.configs").setup({
-                ensure_installed = { "lua", "typescript", "javascript", "go", "python" },
+                ensure_installed = { "lua", "typescript", "javascript", "go", "python", "vue", "html", "css" },
                 highlight = {
                     enable = true
                 }
@@ -72,29 +72,37 @@ require("lazy").setup({
         lazy = false,
     },
     {
-      'jose-elias-alvarez/null-ls.nvim',
-      dependencies = {'nvim-lua/plenary.nvim'},
-      config = function()
-        local null_ls = require('null-ls')
-        null_ls.setup({
-          sources = {
-            null_ls.builtins.formatting.prettier
-          }
-        })
-      end
+        'jose-elias-alvarez/null-ls.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            local null_ls = require('null-ls')
+            null_ls.setup({
+                sources = {
+                    null_ls.builtins.formatting.prettier,
+                    null_ls.builtins.formatting.black,
+                    null_ls.builtins.formatting.isort,
+                    null_ls.builtins.diagnostics.djlint,
+                    null_ls.builtins.formatting.djlint,
+                }
+            })
+        end
     },
+    { 'posva/vim-vue' },
+    { "vim-python/python-syntax" },
+    { "tweekmonster/django-plus.vim" },
+    { "jmcantrell/vim-virtualenv" },
     {
-      'MunifTanjim/prettier.nvim',
-      config = function()
-        require('prettier').setup({
-          bin = 'prettier',
-          filetypes = {
-            "css", "graphql", "html", "javascript", "javascriptreact",
-            "json", "less", "markdown", "scss", "typescript",
-            "typescriptreact", "yaml"
-          },
-        })
-      end
+        'MunifTanjim/prettier.nvim',
+        config = function()
+            require('prettier').setup({
+                bin = 'prettier',
+                filetypes = {
+                    "css", "graphql", "html", "javascript", "javascriptreact",
+                    "json", "less", "markdown", "scss", "typescript",
+                    "typescriptreact", "yaml", "vue"
+                },
+            })
+        end
     },
     { 'akinsho/toggleterm.nvim', version = "*", config = true },
     {

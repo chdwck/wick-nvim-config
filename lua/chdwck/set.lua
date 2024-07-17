@@ -28,3 +28,12 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.wrap = false
+
+
+-- django / python setup
+vim.cmd([[
+  autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType html,htmldjango,css,javascript setlocal expandtab shiftwidth=2 softtabstop=2
+  let g:python_highlight_all = 1
+]])
+
