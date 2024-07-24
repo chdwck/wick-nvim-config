@@ -37,7 +37,7 @@ lsp.configure('tailwindcss', {
            util.find_git_ancestor(fname) or
            vim.fn.getcwd()
   end,
-  filetypes = { 'html', 'css', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'python', 'vue' },
+  filetypes = { 'html', 'css', 'vue' },
 })
 
 -- Configure Volar for Vue files
