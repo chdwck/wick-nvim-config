@@ -32,3 +32,5 @@ vim.keymap.set("n", "-", ":horizontal resize -5<CR>")
 
 -- replace quoutes with backticks
 vim.keymap.set("n", "<leader>``", [[vi'hy:%s/\%V'/`/g]])
+vim.api.nvim_set_keymap('t', '<C-]>', [[<C-\><C-n>]], {noremap = true})
+
