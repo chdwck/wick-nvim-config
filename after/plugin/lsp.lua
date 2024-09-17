@@ -65,7 +65,7 @@ lsp.configure('volar', {
         getDocumentNameCasesRequest = false,
         getDocumentSelectionRequest = false,
       },
-    }
+    },
   }
 })
 
