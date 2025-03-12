@@ -21,6 +21,7 @@ vim.keymap.set("n", "<leader>s", [[:s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><L
 
 -- eslint the current file
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, {})
+vim.keymap.set('n', '<leader>lr', ":LspRestart<CR>")
 vim.keymap.set("n", "<leader><leader>", ":b#<CR>")
 vim.keymap.set("n", "<leader>t", ":term<CR>")
 
@@ -32,4 +33,3 @@ vim.keymap.set("n", "-", ":horizontal resize -5<CR>")
 
 -- exit terminal mode
 vim.api.nvim_set_keymap('t', '<C-]>', [[<C-\><C-n>]], { noremap = true })
-
