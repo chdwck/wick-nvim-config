@@ -85,9 +85,9 @@ require("lazy").setup({
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
             "nvim-telescope/telescope.nvim", -- optional
-            "neovim/nvim-lspconfig", -- optional
+            "neovim/nvim-lspconfig",         -- optional
         },
-        opts = {}                    -- your configuration
+        opts = {}                            -- your configuration
     },
     {
         'jose-elias-alvarez/null-ls.nvim',
@@ -122,4 +122,19 @@ require("lazy").setup({
         end
     },
     { 'akinsho/toggleterm.nvim', version = "*", config = true },
+    {
+        "tpope/vim-fugitive",
+        event = "VeryLazy",
+        cmd = {
+            "G",
+            "Git",
+            "Gdiffsplit",
+            "Gread",
+            "Gwrite",
+            "Ggrep",
+            "GMove",
+            "GDelete",
+            "GBrowse",
+        },
+    },
 })

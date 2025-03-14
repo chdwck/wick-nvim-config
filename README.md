@@ -11,7 +11,6 @@ wonderful. I feel like I just built my lightsaber.
 ### New to nvim and want to try out my preferences?
 
 * [install nvim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
-* [install lazygit](https://github.com/jesseduffield/lazygit) - a truly magical git experience
 * [install catpuccin terminal colors](https://github.com/catppuccin/catppuccin) - optional, just keeps colors consistent between lazygit and nvim
 * Install my config
 ```
@@ -22,10 +21,10 @@ git clone git@github.com:chdwck/wick-nvim-config.git nvim
 #### Some of my favorite remaps
 Note for the new peeps: `<leader>` means space, `<C-d>` means control key + d
 
-* `<leader>gg` - open lazygit
+* `<leader>gg` - open fugitive
 * `<leader>e` - toggle file tree
 * `<leader>u` - toggle undotree
 * `<leader>s` - search and replace word under cursor in line
 * `<leader>S` - search and replace word under cursor in file
-* `<leader>/` - comment line 
+* `<leader>gc` - comment selection 
 * `<C-h>`, `<C-j>`,`<C-k>`, `<C-l>` - navigate panes

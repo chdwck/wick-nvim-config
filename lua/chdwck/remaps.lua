@@ -33,3 +33,7 @@ vim.keymap.set("n", "-", ":horizontal resize -5<CR>")
 
 -- exit terminal mode
 vim.api.nvim_set_keymap('t', '<C-]>', [[<C-\><C-n>]], { noremap = true })
+
+
+-- Shortcut for vim fugitive git terminal
+vim.keymap.set('n', '<leader>gg', ':G<CR>', { desc = "Github terminal"})
