@@ -10,12 +10,10 @@ end)
 require('mason').setup({})
 require('mason-lspconfig').setup({
     ensure_installed = {
-        'tailwindcss',
         'html',
         'cssls',
         'pyright',
         'volar',
-        'ts_ls',
         'lua_ls',
     },
     handlers = {
@@ -42,67 +40,13 @@ require('mason-lspconfig').setup({
             })
         end,
 
-        -- Tailwind CSS configuration
-        tailwindcss = function()
-            require('lspconfig').tailwindcss.setup({
-                -- cmd = 'tailwindcss-language-server --stdio',
-                filetypes = { 'html', 'css', 'vue' },
-            })
-        end,
-
-        -- Update your TSServer config in the handlers section
-        ts_ls = function()
-            require('lspconfig').ts_ls.setup({
-                init_options = {
-                    preferences = {
-                        importModuleSpecifierPreference = 'relative',
-                        includeCompletionsForModuleExports = true,
-                        includeCompletionsWithInsertText = true,
-                    }
-                },
-                settings = {
-                    typescript = {
-                        inlayHints = {
-                            includeInlayParameterNameHints = 'all',
-                            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                            includeInlayFunctionParameterTypeHints = true,
-                            includeInlayVariableTypeHints = true,
-                            includeInlayPropertyDeclarationTypeHints = true,
-                            includeInlayFunctionLikeReturnTypeHints = true,
-                            includeInlayEnumMemberValueHints = true,
-                        },
-                        suggest = {
-                            includeCompletionsForModuleExports = true,
-                            autoImports = true,
-                        },
-                    },
-                    javascript = {
-                        inlayHints = {
-                            includeInlayParameterNameHints = 'all',
-                            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                            includeInlayFunctionParameterTypeHints = true,
-                            includeInlayVariableTypeHints = true,
-                            includeInlayPropertyDeclarationTypeHints = true,
-                            includeInlayFunctionLikeReturnTypeHints = true,
-                            includeInlayEnumMemberValueHints = true,
-                        },
-                        suggest = {
-                            includeCompletionsForModuleExports = true,
-                            autoImports = true,
-                        },
-                    },
-                }
-            })
-        end,
-
         -- Vue configuration
         volar = function()
             require('lspconfig').volar.setup({
-                filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+                filetypes = { 'javascriptreact', 'typescriptreact', 'vue', 'json', 'typescript', 'javascript' },
                 init_options = {
-                    typescript = {
-                        tsdk = vim.fn.expand(
-                            '$HOME/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib')
+                    vue = {
+                        hybridMode = false,
                     },
                     languageFeatures = {
                         implementation = true,
@@ -122,7 +66,6 @@ require('mason-lspconfig').setup({
                             getDocumentNameCasesRequest = false,
                             getDocumentSelectionRequest = false,
                             includeCompletionsForModuleExports = true -- Include node_modules exports
-
                         },
                     },
                     documentFeatures = {

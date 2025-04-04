@@ -64,13 +64,12 @@ require("lazy").setup({
             vim.cmd.colorscheme "catppuccin"
         end
     },
-    -- { "mbbill/undotree" },
+    { "mbbill/undotree" },
     {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.2',
+        tag = '0.1.5',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
-    -- add this to your lua/plugins.lua, lua/plugins/init.lua,  or the file you keep your other plugins:
     {
         'numToStr/Comment.nvim',
         opts = {
@@ -87,41 +86,12 @@ require("lazy").setup({
             "nvim-telescope/telescope.nvim", -- optional
             "neovim/nvim-lspconfig",         -- optional
         },
-        opts = {}                            -- your configuration
-    },
-    {
-        'jose-elias-alvarez/null-ls.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim' },
-        config = function()
-            local null_ls = require('null-ls')
-            null_ls.setup({
-                sources = {
-                    null_ls.builtins.formatting.prettier,
-                    null_ls.builtins.formatting.black,
-                    null_ls.builtins.formatting.isort,
-                    null_ls.builtins.diagnostics.djlint,
-                    null_ls.builtins.formatting.djlint,
-                }
-            })
-        end
+        opts = {}
     },
     { "vim-python/python-syntax" },
     { "tweekmonster/django-plus.vim" },
     { "jmcantrell/vim-virtualenv" },
-    {
-        'MunifTanjim/prettier.nvim',
-        config = function()
-            require('prettier').setup({
-                bin = 'prettier',
-                filetypes = {
-                    "css", "graphql", "html", "javascript", "javascriptreact",
-                    "json", "less", "markdown", "scss", "typescript",
-                    "typescriptreact", "yaml", "vue"
-                },
-            })
-        end
-    },
-    { 'akinsho/toggleterm.nvim', version = "*", config = true },
+    { 'akinsho/toggleterm.nvim',     version = "*", config = true },
     {
         "tpope/vim-fugitive",
         event = "VeryLazy",
@@ -136,5 +106,9 @@ require("lazy").setup({
             "GDelete",
             "GBrowse",
         },
+        {
+            'stevearc/conform.nvim',
+            opts = {},
+        }
     },
 })
