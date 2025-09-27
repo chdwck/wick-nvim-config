@@ -73,16 +73,16 @@ require("lazy").setup({
 		"stevearc/conform.nvim",
 		opts = {},
 	},
+	{ "norcalli/nvim-colorizer.lua" },
 	{
-		"sainnhe/everforest",
-		lazy = false,
+		"catppuccin/nvim",
+		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			vim.g.everforest_enable_italic = true
-			vim.g.everforest_background = 'hard'
-			vim.opt.background = 'dark'
-			vim.cmd.colorscheme("everforest")
+			require("catppuccin").setup({
+				flavour = "macchiato",
+			})
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
-	{ "norcalli/nvim-colorizer.lua" },
 })
