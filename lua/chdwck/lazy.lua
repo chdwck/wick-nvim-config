@@ -36,6 +36,7 @@ require("lazy").setup({
 	},
 	{ "mason-org/mason.nvim" },
 	{ "neovim/nvim-lspconfig" },
+	{ "neoclide/coc.nvim", branch = "release" },
 	{ "mbbill/undotree" },
 	{
 		"nvim-telescope/telescope.nvim",
