@@ -34,43 +34,8 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v2.x",
-		dependencies = {
-			-- LSP Support
-			{ "neovim/nvim-lspconfig" },
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
-
-			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "hrsh7th/cmp-buffer" },
-			{ "hrsh7th/cmp-path" },
-			{ "saadparwaiz1/cmp_luasnip" },
-			{ "hrsh7th/cmp-nvim-lua" },
-
-			-- Snippets
-			{ "L3MON4D3/LuaSnip" },
-			{ "rafamadriz/friendly-snippets" },
-		},
-	},
-	-- {
-	--     "catppuccin/nvim",
-	--     name = "catppuccin",
-	--     priority = 1000,
-	--     config = function()
-	--         vim.cmd.colorscheme "catppuccin"
-	--     end
-	-- },
-	{
-		"miikanissi/modus-themes.nvim",
-		priority = 1000,
-		config = function()
-			vim.cmd.colorscheme("modus_vivendi")
-		end,
-	},
+	{ "mason-org/mason.nvim" },
+	{ "neovim/nvim-lspconfig" },
 	{ "mbbill/undotree" },
 	{
 		"nvim-telescope/telescope.nvim",
@@ -83,17 +48,6 @@ require("lazy").setup({
 			-- add any options here
 		},
 		lazy = false,
-	},
-	{
-		"luckasRanarison/tailwind-tools.nvim",
-		name = "tailwind-tools",
-		build = ":UpdateRemotePlugins",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-telescope/telescope.nvim", -- optional
-			"neovim/nvim-lspconfig", -- optional
-		},
-		opts = {},
 	},
 	{ "vim-python/python-syntax" },
 	{ "tweekmonster/django-plus.vim" },
@@ -116,11 +70,6 @@ require("lazy").setup({
 	},
 	{
 		"stevearc/conform.nvim",
-		opts = {},
-	},
-	{
-		"S1M0N38/love2d.nvim",
-		event = "VeryLazy",
 		opts = {},
 	},
 })

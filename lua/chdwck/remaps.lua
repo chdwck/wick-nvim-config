@@ -1,5 +1,4 @@
-local conform = require('conform')
-
+local conform = require("conform")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -14,19 +13,22 @@ vim.keymap.set("n", "<C-j>", ":wincmd j<CR>")
 vim.keymap.set("n", "<C-k>", ":wincmd k<CR>")
 vim.keymap.set("n", "<C-l>", ":wincmd l<CR>")
 
-
-vim.keymap.set("x", "<leader>p", [["_dP]]);
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]]);
+vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- replace this word
 vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>s", [[:s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- format the current file
-vim.keymap.set('n', '<leader>lf', conform.format, {})
-vim.keymap.set('n', '<leader>lr', ":LspRestart<CR>")
+vim.keymap.set("n", "<leader>lf", conform.format, {})
+vim.keymap.set("n", "<leader>lr", ":LspRestart<CR>")
 vim.keymap.set("n", "<leader><leader>", ":b#<CR>")
 vim.keymap.set("n", "<leader>t", ":term<CR>")
+-- LSP keybindings
+vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+vim.keymap.set("n", "K", vim.lsp.buf.hover)
+vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
 
 -- Window resize commands
 vim.keymap.set("n", "+", ":vert resize +5<CR>")
@@ -35,8 +37,7 @@ vim.keymap.set("n", "=", ":horizontal resize +5<CR>")
 vim.keymap.set("n", "-", ":horizontal resize -5<CR>")
 
 -- exit terminal mode
-vim.api.nvim_set_keymap('t', '<C-]>', [[<C-\><C-n>]], { noremap = true })
-
+vim.api.nvim_set_keymap("t", "<C-]>", [[<C-\><C-n>]], { noremap = true })
 
 -- Shortcut for vim fugitive git terminal
-vim.keymap.set('n', '<leader>gg', ':G<CR>', { desc = "Github terminal" })
+vim.keymap.set("n", "<leader>gg", ":G<CR>", { desc = "Github terminal" })
