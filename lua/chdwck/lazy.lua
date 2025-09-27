@@ -73,4 +73,16 @@ require("lazy").setup({
 		"stevearc/conform.nvim",
 		opts = {},
 	},
+	{
+		"sainnhe/everforest",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.g.everforest_enable_italic = true
+			vim.g.everforest_background = 'hard'
+			vim.opt.background = 'dark'
+			vim.cmd.colorscheme("everforest")
+		end,
+	},
+	{ "norcalli/nvim-colorizer.lua" },
 })

@@ -41,3 +41,9 @@ vim.api.nvim_set_keymap("t", "<C-]>", [[<C-\><C-n>]], { noremap = true })
 
 -- Shortcut for vim fugitive git terminal
 vim.keymap.set("n", "<leader>gg", ":G<CR>", { desc = "Github terminal" })
+
+-- Tab completion for coc.nvim with auto-import
+vim.keymap.set("i", "<Tab>", 'coc#pum#visible() ? coc#_select_confirm() : "<Tab>"', { expr = true, noremap = true, silent = true })
+
+-- Organize imports (remove unused)
+vim.keymap.set("n", "<leader>lo", ":CocCommand editor.action.organizeImport<CR>", { desc = "Organize imports" })
