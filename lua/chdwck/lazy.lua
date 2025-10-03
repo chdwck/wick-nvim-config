@@ -41,7 +41,21 @@ require("lazy").setup({
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.5",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope-media-files.nvim",
+		},
+		config = function()
+			require("telescope").setup({
+				extensions = {
+					media_files = {
+						filetypes = { "png", "webp", "jpg", "jpeg" },
+						find_cmd = "rg",
+					},
+				},
+			})
+			require("telescope").load_extension("media_files")
+		end,
 	},
 	{
 		"numToStr/Comment.nvim",
@@ -74,15 +88,38 @@ require("lazy").setup({
 		opts = {},
 	},
 	{ "norcalli/nvim-colorizer.lua" },
+	-- {
+	-- 	"catppuccin/nvim",
+	-- 	name = "catppuccin",
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		require("catppuccin").setup({
+	-- 			flavour = "macchiato",
+	-- 		})
+	-- 		vim.cmd.colorscheme("catppuccin")
+	-- 	end,
+	-- },
+	--    {
+	-- 	"sainnhe/everforest",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.g.everforest_enable_italic = true
+	-- 		vim.g.everforest_background = 'hard'
+	-- 		vim.opt.background = 'dark'
+	-- 		vim.cmd.colorscheme("everforest")
+	-- 	end,
+	-- },
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000,
+		"rose-pine/neovim",
+		name = "rose-pine",
 		config = function()
-			require("catppuccin").setup({
-				flavour = "macchiato",
+			require("rose-pine").setup({
+				styles = {
+					transparency = true,
+				},
 			})
-			vim.cmd.colorscheme("catppuccin")
+			vim.cmd("colorscheme rose-pine")
 		end,
 	},
 })
