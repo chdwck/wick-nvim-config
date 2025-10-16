@@ -88,28 +88,29 @@ require("lazy").setup({
 		opts = {},
 	},
 	{ "norcalli/nvim-colorizer.lua" },
-	-- {
-	-- 	"catppuccin/nvim",
-	-- 	name = "catppuccin",
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		require("catppuccin").setup({
-	-- 			flavour = "macchiato",
-	-- 		})
-	-- 		vim.cmd.colorscheme("catppuccin")
-	-- 	end,
-	-- },
-	--    {
-	-- 	"sainnhe/everforest",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		vim.g.everforest_enable_italic = true
-	-- 		vim.g.everforest_background = 'hard'
-	-- 		vim.opt.background = 'dark'
-	-- 		vim.cmd.colorscheme("everforest")
-	-- 	end,
-	-- },
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		config = function()
+			require("catppuccin").setup({
+				flavour = "mocha",
+				transparent_background = true,
+			})
+			-- vim.cmd.colorscheme("catppuccin")
+		end,
+	},
+	{
+		"sainnhe/everforest",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.g.everforest_enable_italic = true
+			vim.g.everforest_background = "hard"
+			vim.opt.background = "dark"
+			-- vim.cmd.colorscheme("everforest")
+		end,
+	},
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
@@ -119,7 +120,20 @@ require("lazy").setup({
 					transparency = true,
 				},
 			})
-			vim.cmd("colorscheme rose-pine")
+			-- vim.cmd("colorscheme rose-pine-moon")
+		end,
+	},
+	{
+		"sainnhe/gruvbox-material",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			-- Optionally configure and load the colorscheme
+			-- directly inside the plugin declaration.
+			vim.g.gruvbox_material_enable_italic = true
+			vim.g.gruvbox_material_transparent_background = "1"
+			vim.g.gruvbox_material_background = "hard"
+			vim.cmd.colorscheme("gruvbox-material")
 		end,
 	},
 })
