@@ -189,7 +189,7 @@ require("lazy").setup({
 				flavour = "mocha",
 				transparent_background = true,
 			})
-			-- vim.cmd.colorscheme("catppuccin")
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 	{
@@ -225,7 +225,7 @@ require("lazy").setup({
 			vim.g.gruvbox_material_enable_italic = true
 			-- vim.g.gruvbox_material_transparent_background = "1"
 			vim.g.gruvbox_material_background = "hard"
-			vim.cmd.colorscheme("gruvbox-material")
+			-- vim.cmd.colorscheme("gruvbox-material")
 		end,
 	},
 })
