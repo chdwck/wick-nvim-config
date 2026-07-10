@@ -36,9 +36,9 @@ vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
 vim.keymap.set("n", "gr", vim.lsp.buf.references)
 
 -- Window resize commands
-vim.keymap.set("n", "+", ":vert resize +5<CR>")
+vim.keymap.set("n", "=", ":vert resize +5<CR>")
 vim.keymap.set("n", "_", ":vert resize -5<CR>")
-vim.keymap.set("n", "=", ":horizontal resize +5<CR>")
+vim.keymap.set("n", "+", ":horizontal resize +5<CR>")
 vim.keymap.set("n", "-", ":horizontal resize -5<CR>")
 
 -- exit terminal mode
@@ -47,13 +47,20 @@ vim.api.nvim_set_keymap("t", "<C-]>", [[<C-\><C-n>]], { noremap = true })
 -- Shortcut for vim fugitive git terminal
 vim.keymap.set("n", "<leader>gg", ":G<CR>", { desc = "Github terminal" })
 
--- Tab completion for coc.nvim with auto-import
-vim.keymap.set(
-	"i",
-	"<Tab>",
-	'coc#pum#visible() ? coc#_select_confirm() : "<Tab>"',
-	{ expr = true, noremap = true, silent = true }
-)
+-- big find
+vim.keymap.set("n", "<leader>xx", function()
+	require("telescope.builtin").live_grep({
+		default_text = vim.fn.expand("<cword>"),
+	})
+end, { desc = "Live grep word under cursor" })
 
--- Organize imports (remove unused)
-vim.keymap.set("n", "<leader>lo", ":CocCommand editor.action.organizeImport<CR>", { desc = "Organize imports" })
+vim.keymap.set("v", "<leader>xx", function()
+	-- Get visual selection
+	vim.cmd('noau normal! "vy"')
+	local text = vim.fn.getreg("v")
+	vim.fn.setreg("v", {})
+
+	require("telescope.builtin").live_grep({
+		default_text = text,
+	})
+end, { desc = "Live grep word in visual selection" })

@@ -18,11 +18,38 @@
 ---
 --- NOTE: Since v3.0.0, the Vue Language Server [no longer supports takeover mode](https://github.com/vuejs/language-tools/pull/5248).
 
----@type vim.lsp.Config
-return {
+-- Get capabilities from cmp_nvim_lsp if available
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if has_cmp then
+	capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+end
+
+vim.lsp.config("vue_ls", {
+	capabilities = capabilities,
 	cmd = { "vue-language-server", "--stdio" },
 	filetypes = { "vue" },
-	root_markers = { "package.json" },
+	root_dir = function(bufnr, on_dir)
+		local root = vim.fs.root(bufnr, { "package.json", ".git" })
+		on_dir(root or vim.fn.getcwd())
+	end,
+	before_init = function(params, config)
+		local root_dir = params.rootPath or (params.rootUri and vim.uri_to_fname(params.rootUri)) or vim.fn.getcwd()
+		local ts_lib = root_dir .. "/node_modules/typescript/lib"
+
+		config.init_options = config.init_options or {}
+		if vim.fn.isdirectory(ts_lib) == 1 then
+			config.init_options.typescript = {
+				tsdk = ts_lib,
+			}
+			config.init_options.vue = {
+				hybridMode = true,
+			}
+			print("[vue_ls] Using TypeScript from: " .. ts_lib)
+		else
+			print("[vue_ls] TypeScript not found in project")
+		end
+	end,
 	on_init = function(client)
 		local retries = 0
 
@@ -52,9 +79,8 @@ return {
 
 			local param = unpack(result)
 			local id, command, payload = unpack(param)
-			print(id, command, payload)
 			ts_client:exec_cmd({
-				title = "vue_request_forward", -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
+				title = "vue_request_forward",
 				command = "typescript.tsserverRequest",
 				arguments = {
 					command,
@@ -69,4 +95,4 @@ return {
 
 		client.handlers["tsserver/request"] = typescriptHandler
 	end,
-}
+})

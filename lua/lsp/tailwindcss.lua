@@ -4,10 +4,16 @@
 --- Tailwind CSS Language Server can be installed via npm:
 ---
 --- npm install -g @tailwindcss/language-server
-local util = require("lspconfig.util")
 
----@type vim.lsp.Config
-return {
+-- Get capabilities from cmp_nvim_lsp if available
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if has_cmp then
+	capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+end
+
+vim.lsp.config("tailwindcss", {
+	capabilities = capabilities,
 	cmd = { "tailwindcss-language-server", "--stdio" },
 	-- filetypes copied and adjusted from tailwindcss-intellisense
 	filetypes = {
@@ -65,7 +71,6 @@ return {
 			config.settings.editor.tabSize = vim.lsp.util.get_effective_tabstop()
 		end
 	end,
-	workspace_required = true,
 	root_dir = function(bufnr, on_dir)
 		local root_files = {
 			-- Generic
@@ -87,8 +92,7 @@ return {
 			".git",
 		}
 		local fname = vim.api.nvim_buf_get_name(bufnr)
-		root_files = util.insert_package_json(root_files, "tailwindcss", fname)
-		root_files = util.root_markers_with_field(root_files, { "mix.lock", "Gemfile.lock" }, "tailwind", fname)
-		on_dir(vim.fs.dirname(vim.fs.find(root_files, { path = fname, upward = true })[1]))
+		local found = vim.fs.find(root_files, { path = fname, upward = true })[1]
+		on_dir(found and vim.fs.dirname(found) or vim.fn.getcwd())
 	end,
-}
+})
